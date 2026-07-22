@@ -13,9 +13,8 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - name: Audit formula
-        run: brew audit --strict Formula/agentlaunch-doctor.rb
-      - name: Install from source
-        run: brew install --build-from-source ./Formula/agentlaunch-doctor.rb
-      - name: Test formula
-        run: brew test agentlaunch-doctor
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Check tap syntax
+        run: brew test-bot --only-tap-syntax
+      - name: Build and test formula
+        run: brew test-bot --only-formulae
