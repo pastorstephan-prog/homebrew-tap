@@ -6,8 +6,8 @@ class AgentlaunchDoctor < Formula
   license "ISC"
   head "https://github.com/pastorstephan-prog/agentlaunch-doctor.git", branch: "develop"
 
-  depends_on :macos
   depends_on xcode: ["15.0", :build]
+  depends_on :macos
 
   def install
     system "swift", "build", "-c", "release", "--disable-sandbox"
